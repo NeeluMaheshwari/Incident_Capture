@@ -44,6 +44,7 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
+
     public void signup() {
         Log.d(TAG, "Signup");
 
