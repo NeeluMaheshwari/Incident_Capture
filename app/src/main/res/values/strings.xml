@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Incident_Capture</string>
+    <string name="spinner_title">Select Type</string>
 </resources>
