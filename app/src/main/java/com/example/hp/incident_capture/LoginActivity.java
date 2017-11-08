@@ -43,13 +43,13 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         spinner.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
-        List<String> type = new ArrayList<String>();
+        List<String> type = new ArrayList<>();
         type.add("Reporter");
         type.add("Responder");
 
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, type);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, type);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -61,7 +61,9 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
 
             @Override
             public void onClick(View v) {
-                login();
+               // login();
+                Intent intent = new Intent(getApplicationContext(), Reporter.class);
+                startActivity(intent);
             }
         });
 
