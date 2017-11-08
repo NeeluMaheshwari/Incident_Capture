@@ -7,4 +7,14 @@
     <string name="city">City</string>
     <string name="address">Address</string>
     <string name="subject">Subject</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="email1">Email</string>
+    <string name="password1">Password</string>
+    <string name="type">Type:</string>
+    <string name="login">Login</string>
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
 </resources>

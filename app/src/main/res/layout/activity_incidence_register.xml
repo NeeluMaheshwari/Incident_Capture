@@ -7,80 +7,134 @@
     tools:context="com.example.hp.incident_capture.incidence_register">
 
     <LinearLayout
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="25dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/layout1"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <ImageButton
+            android:id="@+id/camera"
+            android:contentDescription="camera icon"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_alignLeft="@+id/gallery"
+            android:background="@drawable/fab_background"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_camera"
+            android:scaleType="fitCenter"/>
+        <ImageButton
+            android:id="@+id/gallery"
+            android:layout_centerInParent="true"
+            android:layout_alignLeft="@+id/video"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/fab_background"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_gallery"
+            android:scaleType="fitCenter"/>
+        <ImageButton
+            android:id="@+id/video"
+            android:layout_centerInParent="true"
+            android:layout_alignLeft="@+id/mic"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/fab_background"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_video"
+            android:scaleType="fitCenter"/>
+        <ImageButton
+            android:id="@+id/mic"
+            android:background="@drawable/fab_background"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_mic"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="495dp"
+        android:layout_below="@+id/layout1"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingTop="56dp"
+        android:paddingTop="80dp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        tools:layout_editor_absoluteY="8dp">
 
         <!--  Subject Label -->
-        <android.support.design.widget.TextInputLayout
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/ic_image_" />
+
+        <EditText
+            android:id="@+id/input_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:hint="@string/subject"
+            android:inputType="textCapWords" />
 
-            <EditText
-                android:id="@+id/input_subject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/subject"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
-
-
-        <!--  Address Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:hint="@string/address"
+            android:inputType="textCapWords" />
 
-            <EditText
-                android:id="@+id/input_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/address"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
-
-        <!-- City Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:hint="@string/city"
+            android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/input_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/city"
-                android:inputType="textEmailAddress" />
-        </android.support.design.widget.TextInputLayout>
-
-        <!-- Pin code Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_pin_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/input_pin_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/pin_code" />
-        </android.support.design.widget.TextInputLayout>
-
+            android:layout_marginTop="8dp"
+            android:hint="@string/pin_code" />
         <!-- Spinner Element -->
         <Spinner
             android:id="@+id/spinner_ir"
@@ -89,18 +143,13 @@
             android:prompt="@string/spinner_title" />
 
         <!-- Description -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/input_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/description" />
-        </android.support.design.widget.TextInputLayout>
+            android:layout_marginTop="8dp"
+            android:hint="@string/description" />
 
         <!-- Report Incidence Button -->
         <android.support.v7.widget.AppCompatButton
