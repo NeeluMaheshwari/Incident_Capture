@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1014070626196",
+    "firebase_url": "https://incident-capture.firebaseio.com",
+    "project_id": "incident-capture",
+    "storage_bucket": "incident-capture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014070626196:android:c23e5c4ca588f306",
+        "android_client_info": {
+          "package_name": "com.example.hp.incident_capture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014070626196-mnf7uh0q963j68831ac0sj58ps6dggdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ZhYR-OQp6TPz7iv0cB4AYMJQ4KjQVe8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
