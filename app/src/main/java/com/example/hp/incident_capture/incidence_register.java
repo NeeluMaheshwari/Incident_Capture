@@ -102,24 +102,15 @@ public class incidence_register extends AppCompatActivity {
             startActivityForResult(takeVideoIntent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
         }
 
-
-
-//        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-//
-//        //fileUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
-//
-//        // set video quality
-//        // 1- for high quality video
-//        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-//
-//       // intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-//
-//        // start the video capture Intent
-//        startActivityForResult(intent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
-
     }
 
+    public void loadAudio(View view) {
 
+
+        Intent intent1 = new Intent(getApplicationContext(), RecordActivity.class);
+        startActivity(intent1);
+
+    }
 
 
 
