@@ -14,25 +14,25 @@
         android:paddingRight="24dp"
         android:paddingTop="56dp"
         android:weightSum="1"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="-17dp"
+        tools:layout_editor_absoluteY="10dp">
 
         <ImageButton
-            android:contentDescription="Report Icon"
             android:id="@+id/btn_report"
-            android:layout_width="144dp"
-            android:layout_height="136dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_column="0"
             android:layout_row="0"
             android:background="@drawable/fab_background"
+            android:contentDescription="Report Icon"
             android:padding="12dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_analytics" />
 
         <ImageButton
             android:id="@+id/btn_history"
-            android:layout_width="140dp"
-            android:layout_height="136dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_column="1"
             android:layout_row="0"
             android:background="@drawable/fab_background"
