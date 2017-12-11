@@ -22,11 +22,23 @@ public class Reporter extends AppCompatActivity {
 //        ButterKnife.inject(this);
         //setContentView(R.layout.activity_main);
         ImageButton incidence_register = (ImageButton) findViewById(R.id.btn_report);
+        ImageButton ClickableListActivity = (ImageButton) findViewById(R.id.btn_history);
         incidence_register.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), incidence_register.class);
+                        startActivity(intent);
+                    }
+                }
+
+        );
+
+        ClickableListActivity.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), ClickableListActivity.class);
                         startActivity(intent);
                     }
                 }
