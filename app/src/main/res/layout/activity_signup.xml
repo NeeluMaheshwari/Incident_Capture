@@ -21,8 +21,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:hint="@string/name"
-            android:inputType="textCapWords"
-            android:text="dcd" />
+            android:inputType="textCapWords" />
 
            <EditText android:id="@+id/input_email"
                 android:layout_width="match_parent"
