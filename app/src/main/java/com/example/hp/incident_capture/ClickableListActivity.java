@@ -20,8 +20,6 @@ public class ClickableListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clickable_list);
         listView = (ListView) findViewById(R.id.list);
-
-
         dataModels= new ArrayList<>();
         int i,count;
         count=3;
