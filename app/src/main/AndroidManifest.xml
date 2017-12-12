@@ -41,7 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".ListItemActivity1" />
+        <activity android:name=".ClickableListActivity"></activity>
     </application>
 
 </manifest>
