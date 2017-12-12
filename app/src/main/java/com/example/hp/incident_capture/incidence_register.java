@@ -22,7 +22,7 @@ import java.util.List;
 
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 import static com.example.hp.incident_capture.R.id.imgView;
-//import static com.example.hp.incident_capture.R.id.videoView;
+import static com.example.hp.incident_capture.R.id.videoView;
 
 public class incidence_register extends AppCompatActivity {
     String[] list ={"Fire","Road Accident","Health Problem","Robbery"};
@@ -56,7 +56,6 @@ public class incidence_register extends AppCompatActivity {
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(aa);
 */
-
         Button report_incidence =(Button)findViewById(R.id.btn_report_incidence);
         report_incidence.setOnClickListener(new View.OnClickListener() {
 
@@ -103,15 +102,24 @@ public class incidence_register extends AppCompatActivity {
             startActivityForResult(takeVideoIntent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
         }
 
+
+
+//        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//
+//        //fileUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+//
+//        // set video quality
+//        // 1- for high quality video
+//        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+//
+//       // intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+//
+//        // start the video capture Intent
+//        startActivityForResult(intent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
+
     }
 
-    public void loadAudio(View view) {
 
-
-        Intent intent1 = new Intent(getApplicationContext(), RecordActivity.class);
-        startActivity(intent1);
-
-    }
 
 
 
@@ -134,10 +142,10 @@ public class incidence_register extends AppCompatActivity {
         else if (requestCode == CAMERA_CAPTURE_VIDEO_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
 
- /*               Uri videoUri = data.getData();
+                Uri videoUri = data.getData();
                 VideoView videoView = (VideoView) findViewById(R.id.videoView);
                 videoView.setVideoURI(videoUri);
-*/
+
 
                 // video successfully recorded
                 // preview the recorded video
