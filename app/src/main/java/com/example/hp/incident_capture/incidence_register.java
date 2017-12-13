@@ -206,6 +206,10 @@ public class incidence_register extends AppCompatActivity {
 //        startActivityForResult(intent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
 
     }
+    public void loadAudio(View view) {
+     Intent intent1 = new Intent(getApplicationContext(), RecordActivity.class);
+     startActivity(intent1);
+    }
 
 
     final DatabaseReference report = mdatabaseref.child(userId).getRef();
