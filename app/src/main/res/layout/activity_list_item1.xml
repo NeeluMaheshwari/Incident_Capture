@@ -10,6 +10,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Subject:"
+            android:textSize="25dp"
             />
 
         <!--Text Editor-->
@@ -17,12 +18,13 @@
         <TextView
             android:id="@+id/sub"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="25dp"/>
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
         android:layout_centerInParent="true"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
@@ -32,6 +34,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Category:"
+        android:textSize="25dp"
         />
 
     <!--Text Editor-->
@@ -39,12 +42,14 @@
     <TextView
         android:id="@+id/cat"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Address:"
+        android:textSize="25dp"
         />
 
     <!--Text Editor-->
@@ -52,12 +57,14 @@
     <TextView
         android:id="@+id/add"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="City:"
+        android:textSize="25dp"
         />
 
     <!--Text Editor-->
@@ -65,12 +72,14 @@
     <TextView
         android:id="@+id/city"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Pincode:"
+        android:textSize="25dp"
         />
 
     <!--Text Editor-->
@@ -78,12 +87,14 @@
     <TextView
         android:id="@+id/pincode"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Description:"
+        android:textSize="25dp"
         />
 
     <!--Text Editor-->
@@ -91,7 +102,8 @@
     <TextView
         android:id="@+id/desc"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
 
 
 
