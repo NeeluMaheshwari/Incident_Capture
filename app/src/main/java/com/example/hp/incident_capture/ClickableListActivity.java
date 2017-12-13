@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,12 @@ public class ClickableListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               DataModel dataModel= dataModels.get(position);
+                String subject=dataModel.getName();
                 Intent myIntent = new Intent(view.getContext(), ListItemActivity1.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("subjectline",subject);
+                myIntent.putExtras(bundle);
                 startActivityForResult(myIntent, 0);
 
             }
