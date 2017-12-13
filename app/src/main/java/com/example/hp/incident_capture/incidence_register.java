@@ -45,6 +45,8 @@ public class incidence_register extends AppCompatActivity {
     String[] list = {"Fire", "Road Accident", "Health Problem", "Robbery"};
     @InjectView(R.id.input_subject)
     EditText _subjectText;
+    @InjectView(R.id.category)
+    EditText _categoryText;
     @InjectView(R.id.input_address)
     EditText _addressText;
     @InjectView(R.id.input_city)
@@ -124,12 +126,14 @@ public class incidence_register extends AppCompatActivity {
                     return;
                 }
                 String subject = _subjectText.getText().toString();
+                String category = _categoryText.getText().toString();
                 String address = _addressText.getText().toString();
                 String city = _cityText.getText().toString();
                 String pin_code = _pin_codeText.getText().toString();
                 String description = _descriptionText.getText().toString();
                 report.child(subject).setValue(subject);
                 report.child(subject).child("Subject").setValue(subject);
+                report.child(subject).child("Category").setValue(category);
                 report.child(subject).child("Address").setValue(address);
                 report.child(subject).child("City").setValue(city);
                 report.child(subject).child("Pin-code").setValue(pin_code);
@@ -230,7 +234,12 @@ public class incidence_register extends AppCompatActivity {
             ImageView imgView = (ImageView) findViewById(R.id.imgView);
 
             imgView.setImageBitmap(bitmap);
-            url=encodeBitmapAndSaveToFirebase(bitmap);
+            if (bitmap != null) {
+                url = encodeBitmapAndSaveToFirebase(bitmap);
+            }
+            else{
+
+            }
         }
 
 
@@ -317,8 +326,6 @@ public class incidence_register extends AppCompatActivity {
                     .show();
 
         }
-
-
 
     }
 
