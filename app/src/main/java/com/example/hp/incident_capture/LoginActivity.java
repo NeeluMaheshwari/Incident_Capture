@@ -124,7 +124,8 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                                         _passwordText.setError(null);
                                         Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
+                                }
+                                else {
                                     Intent intent = new Intent(getApplicationContext(), Reporter.class);
                                     Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
                                     startActivity(intent);
