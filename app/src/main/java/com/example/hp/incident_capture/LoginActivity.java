@@ -46,11 +46,11 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, Reporter.class));
-
-            finish();
-        }
+//        if (auth.getCurrentUser() != null) {
+//            startActivity(new Intent(LoginActivity.this, Responser.class));
+//
+//            finish();
+//        }
 
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
@@ -124,12 +124,15 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                                         _passwordText.setError(null);
                                         Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    Intent intent = new Intent(getApplicationContext(), Reporter.class);
-                                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                    startActivity(intent);
-                                    finish();
                                 }
+                              //  else {
+
+
+//                                    Intent intent = new Intent(getApplicationContext(), Responser.class);
+//                                    Toast.makeText(getApplicationContext(), "Successfully", Toast.LENGTH_SHORT).show();
+//                                    startActivity(intent);
+//                                    finish();
+                               // }
                             }
                         });
             }
@@ -138,10 +141,30 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             // On selecting a spinner item
-            String item = parent.getItemAtPosition(position).toString();
+           // String item = parent.getItemAtPosition(position).toString();
 
-            // Showing selected spinner item
-            // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        final Intent intent;
+        switch(position){
+            case 0:
+                if (auth.getCurrentUser() != null) {
+                    intent = new Intent(getApplicationContext(), Reporter.class);
+                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                    // finish();
+                    break;
+                }
+            case 1:
+                if (auth.getCurrentUser() != null) {
+                    intent = new Intent(getApplicationContext(), Responser.class);
+                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                    // finish();
+                    break;
+                }
+
+
+        }
+       // startActivity(intent);
 
         }
 

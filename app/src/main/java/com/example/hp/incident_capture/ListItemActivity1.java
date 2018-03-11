@@ -149,7 +149,7 @@ public class ListItemActivity1 extends AppCompatActivity {
                     }
                 }
                 else
-                    {
+                {
                     // This block of code should already exist, we're just moving it to the 'else' statement:
                 }
             }
