@@ -85,56 +85,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
             }
         });
 
-        _loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = _emailText.getText().toString();
-                final String password = _passwordText.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    _emailText.setError("enter a valid email address");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-
-                //authenticate user
-                auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
-
-                                if (!task.isSuccessful()) {
-                                    // there was an error
-
-                                    if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-                                        _passwordText.setError("between 4 and 10 alphanumeric characters");
-                                    } else {
-                                        _passwordText.setError(null);
-                                        Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
-                                    }
-                              }
-//                              else {
-//                                    Intent intent = new Intent(getApplicationContext(), Reporter.class);
-//                                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
-//                                    startActivity(intent);
-//                                    finish();
-//                                }
-                            }
-                        });
-            }
-        });
     }
     @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -145,16 +96,119 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         switch(position){
             case 0:
                 if (auth.getCurrentUser() != null) {
-                    intent = new Intent(LoginActivity.this, Reporter.class);
-                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                    _loginButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String email = _emailText.getText().toString();
+                            final String password = _passwordText.getText().toString();
+
+                            if (TextUtils.isEmpty(email)) {
+                                Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                                _emailText.setError("enter a valid email address");
+                                return;
+                            }
+
+                            if (TextUtils.isEmpty(password)) {
+                                Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
+
+                            //authenticate user
+                            auth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            // If sign in fails, display a message to the user. If sign in succeeds
+                                            // the auth state listener will be notified and logic to handle the
+                                            // signed in user can be handled in the listener.
+
+                                            if (!task.isSuccessful()) {
+                                                // there was an error
+
+                                                if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+                                                    _passwordText.setError("between 4 and 10 alphanumeric characters");
+                                                } else {
+                                                    _passwordText.setError(null);
+                                                    Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                            else {
+
+                                                Intent intent = new Intent(getApplicationContext(), Reporter.class);
+                                                Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+//                    intent = new Intent(LoginActivity.this, Reporter.class);
+//                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
+//                    startActivity(intent);
                     break;
                 }
             case 1:
                 if (auth.getCurrentUser() != null) {
-                    intent = new Intent(LoginActivity.this, Responser.class);
-                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                _loginButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String email = _emailText.getText().toString();
+                        final String password = _passwordText.getText().toString();
+
+                        if (TextUtils.isEmpty(email)) {
+                            Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                            _emailText.setError("enter a valid email address");
+                            return;
+                        }
+
+                        if (TextUtils.isEmpty(password)) {
+                            Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+
+                        //authenticate user
+                        auth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        // If sign in fails, display a message to the user. If sign in succeeds
+                                        // the auth state listener will be notified and logic to handle the
+                                        // signed in user can be handled in the listener.
+
+                                        if (!task.isSuccessful()) {
+                                            // there was an error
+
+                                            if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+                                                _passwordText.setError("between 4 and 10 alphanumeric characters");
+                                            } else {
+                                                _passwordText.setError(null);
+                                                Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                        else {
+
+                                            Intent intent = new Intent(getApplicationContext(), Responser.class);
+                                            Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                });
+                    }
+                });
+
+//                    intent = new Intent(LoginActivity.this, Responser.class);
+//                    Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
+//                    startActivity(intent);
                     break;
                 }
 // and so on

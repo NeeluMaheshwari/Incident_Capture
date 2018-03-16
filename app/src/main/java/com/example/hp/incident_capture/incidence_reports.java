@@ -41,10 +41,10 @@ public class incidence_reports extends AppCompatActivity {
         Log.e("error","opened");
         DatabaseReference fbDb = null;
         if (fbDb == null) {
-            fbDb = FirebaseDatabase.getInstance().getReference("Reports").child(userId);
+            fbDb = FirebaseDatabase.getInstance().getReference("Reports");
         }
         Log.e("error1","start");
-        fbDb.addListenerForSingleValueEvent(new ValueEventListener() {
+        ValueEventListener key =  new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // get total available quest
@@ -54,6 +54,7 @@ public class incidence_reports extends AppCompatActivity {
                 Iterable<DataSnapshot> dsChildData = dataSnapshot.getChildren();
                 Log.e("error", String.valueOf(size));
                 Log.e("error2",dsChildData.toString());
+
                 int i;
                 //DatabaseReference fdbd1=FirebaseDatabase.getInstance().getReference("Reports").child(userId).child(dataSnapshot);
 
@@ -62,8 +63,26 @@ public class incidence_reports extends AppCompatActivity {
 
                     String subject;
                     subject=childDataSnapshot.getKey();
-                    dataModels.add(new DataModel(subject));
+                    if(subject!=null)
+                    {
+                        DatabaseReference sub = FirebaseDatabase.getInstance().getReference("Reports").child(subject);
+                        ValueEventListener sname = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                                String subject1=childDataSnapshot.getKey();
+                                    dataModels.add(new DataModel(subject1));
+                                }
+                            }
 
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        };
+                        sub.addValueEventListener(sname);
+                    }
+                    //Log.v("error4",childDataSnapshot.getValue(String.class));
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -71,7 +90,8 @@ public class incidence_reports extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+fbDb.addValueEventListener(key);
 
 
         adapter= new CustomAdapter(dataModels,getApplicationContext());
