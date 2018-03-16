@@ -41,12 +41,12 @@ import static com.example.hp.incident_capture.R.id.imgView;
 
 
 
-public class incidence_register extends AppCompatActivity {
+public class incidence_register extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] list = {"Fire", "Road Accident", "Health Problem", "Robbery"};
     @InjectView(R.id.input_subject)
     EditText _subjectText;
-    @InjectView(R.id.category)
-    EditText _categoryText;
+//    @InjectView(R.id.category)
+//    EditText _categoryText;
     @InjectView(R.id.input_address)
     EditText _addressText;
     @InjectView(R.id.input_city)
@@ -81,6 +81,30 @@ public class incidence_register extends AppCompatActivity {
         setContentView(R.layout.activity_incidence_register);
 
         ButterKnife.inject(this);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> type = new ArrayList<>();
+        type.add("Crime");
+        type.add("Traffic");
+        type.add("Municipal Issues");
+        type.add("Harassement");
+        type.add("Corruption");
+        type.add("Domestic Violence");
+
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, type);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 /*
         //getting the instance of Spinner and applying
         Spinner spin=(Spinner)findViewById(R.id.spinner_ir);
@@ -126,14 +150,14 @@ public class incidence_register extends AppCompatActivity {
                     return;
                 }
                 String subject = _subjectText.getText().toString();
-                String category = _categoryText.getText().toString();
+               // String category = _categoryText.getText().toString();
                 String address = _addressText.getText().toString();
                 String city = _cityText.getText().toString();
                 String pin_code = _pin_codeText.getText().toString();
                 String description = _descriptionText.getText().toString();
                 report.child(subject).setValue(subject);
                 report.child(subject).child("Subject").setValue(subject);
-                report.child(subject).child("Category").setValue(category);
+                //report.child(subject).child("Category").setValue(category);
                 report.child(subject).child("Address").setValue(address);
                 report.child(subject).child("City").setValue(city);
                 report.child(subject).child("Pin-code").setValue(pin_code);
@@ -326,6 +350,20 @@ public class incidence_register extends AppCompatActivity {
                     .show();
 
         }
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        // String item = parent.getItemAtPosition(position).toString();
+
+
+
+    }
+
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
 
     }
 

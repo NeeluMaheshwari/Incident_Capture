@@ -34,7 +34,7 @@
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".Reporter"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".Responser"
             android:theme="@style/AppTheme.Dark">
@@ -48,7 +48,8 @@
         <activity android:name=".ClickableListActivity" />
         <activity android:name=".incidence_reports" />
         <activity android:name=".responser_history" />
-        <activity android:name=".ListItemActivity2"></activity>
+        <activity android:name=".ListItemActivity2" />
+        <activity android:name=".Responser_category"></activity>
     </application>
 
 </manifest>

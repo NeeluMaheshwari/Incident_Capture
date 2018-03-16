@@ -28,6 +28,10 @@ public class incidence_reports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incidence_reports);
+
+        Bundle bundle=getIntent().getExtras();
+        String category=bundle.get("category").toString();
+
         listView = (ListView) findViewById(R.id.list);
         dataModels= new ArrayList<>();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
