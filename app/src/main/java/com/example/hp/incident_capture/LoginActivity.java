@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         final Intent intent;
         switch(position){
             case 0:
-                if (auth.getCurrentUser() != null) {
+                {
                     _loginButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                     break;
                 }
             case 1:
-                if (auth.getCurrentUser() != null) {
+                {
                 _loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

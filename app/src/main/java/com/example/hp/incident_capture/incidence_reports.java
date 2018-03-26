@@ -30,8 +30,8 @@ public class incidence_reports extends AppCompatActivity {
         setContentView(R.layout.activity_incidence_reports);
 
         Bundle bundle=getIntent().getExtras();
-        String category=bundle.get("category").toString();
-
+        final String category=bundle.get("category").toString();
+        Log.v("spinner value123",category);
         listView = (ListView) findViewById(R.id.list);
         dataModels= new ArrayList<>();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -44,7 +44,7 @@ public class incidence_reports extends AppCompatActivity {
             fbDb = FirebaseDatabase.getInstance().getReference("Reports");
         }
         Log.e("error1","start");
-        ValueEventListener key =  new ValueEventListener() {
+        fbDb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // get total available quest
@@ -61,17 +61,47 @@ public class incidence_reports extends AppCompatActivity {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     Log.v("error3", childDataSnapshot.getKey()); //displays the key for the node
 
-                    String subject;
+                    final String subject;
                     subject=childDataSnapshot.getKey();
                     if(subject!=null)
                     {
-                        DatabaseReference sub = FirebaseDatabase.getInstance().getReference("Reports").child(subject);
-                        ValueEventListener sname = new ValueEventListener() {
+                        final DatabaseReference sub = FirebaseDatabase.getInstance().getReference("Reports").child(subject);
+                        sub.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                                String subject1=childDataSnapshot.getKey();
-                                    dataModels.add(new DataModel(subject1));
+                                final String subject1=childDataSnapshot.getKey();
+                                    Log.v("error5", childDataSnapshot.getKey());
+
+                                    sub.child(subject1).child("Category").addValueEventListener(new ValueEventListener() {
+
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            String category1 = dataSnapshot.getValue(String.class);
+                                            Log.v("error6", category);
+                                            Log.v("error7", category1);
+                                            Log.v("error8", subject1);
+
+                                            if(category.equals("All Reports"))
+                                            {
+                                                dataModels.add(new DataModel(subject1));
+                                                Log.v("error12", subject1);
+                                            }
+
+                                            else if(category1.equals(category))
+                                            {
+                                                dataModels.add(new DataModel(subject1));
+                                                Log.v("error9", category);
+                                                Log.v("error10", category1);
+                                                Log.v("error11", subject1);
+                                            }
+                                        }
+
+
+                                        public void onCancelled(DatabaseError databaseError) {
+                                            Log.w("onCancelled", databaseError.toException());
+                                        }
+                                    });
+
                                 }
                             }
 
@@ -79,8 +109,8 @@ public class incidence_reports extends AppCompatActivity {
                             public void onCancelled(DatabaseError databaseError) {
 
                             }
-                        };
-                        sub.addValueEventListener(sname);
+                        });
+
                     }
                     //Log.v("error4",childDataSnapshot.getValue(String.class));
                 }
@@ -90,8 +120,8 @@ public class incidence_reports extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        };
-fbDb.addValueEventListener(key);
+        });
+
 
 
         adapter= new CustomAdapter(dataModels,getApplicationContext());

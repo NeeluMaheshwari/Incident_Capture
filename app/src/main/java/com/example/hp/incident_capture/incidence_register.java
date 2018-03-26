@@ -45,8 +45,7 @@ public class incidence_register extends AppCompatActivity implements AdapterView
     String[] list = {"Fire", "Road Accident", "Health Problem", "Robbery"};
     @InjectView(R.id.input_subject)
     EditText _subjectText;
-//    @InjectView(R.id.category)
-//    EditText _categoryText;
+
     @InjectView(R.id.input_address)
     EditText _addressText;
     @InjectView(R.id.input_city)
@@ -82,7 +81,7 @@ public class incidence_register extends AppCompatActivity implements AdapterView
 
         ButterKnife.inject(this);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -92,7 +91,7 @@ public class incidence_register extends AppCompatActivity implements AdapterView
         type.add("Crime");
         type.add("Traffic");
         type.add("Municipal Issues");
-        type.add("Harassement");
+        type.add("Harassment");
         type.add("Corruption");
         type.add("Domestic Violence");
 
@@ -149,6 +148,7 @@ public class incidence_register extends AppCompatActivity implements AdapterView
                     Log.e("123", null);
                     return;
                 }
+                String category = spinner.getSelectedItem().toString();
                 String subject = _subjectText.getText().toString();
                // String category = _categoryText.getText().toString();
                 String address = _addressText.getText().toString();
@@ -157,7 +157,7 @@ public class incidence_register extends AppCompatActivity implements AdapterView
                 String description = _descriptionText.getText().toString();
                 report.child(subject).setValue(subject);
                 report.child(subject).child("Subject").setValue(subject);
-                //report.child(subject).child("Category").setValue(category);
+                report.child(subject).child("Category").setValue(category);
                 report.child(subject).child("Address").setValue(address);
                 report.child(subject).child("City").setValue(city);
                 report.child(subject).child("Pin-code").setValue(pin_code);
