@@ -78,7 +78,7 @@ public class incidence_reports extends AppCompatActivity {
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             String category1 = dataSnapshot.getValue(String.class);
                                             Log.v("error6", category);
-                                            Log.v("error7", category1);
+                                            Log.v("error7",""+ category1);
                                             Log.v("error8", subject1);
 
                                             if(category.equals("All Reports"))
