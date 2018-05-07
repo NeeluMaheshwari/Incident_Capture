@@ -49,7 +49,8 @@
         <activity android:name=".incidence_reports" />
         <activity android:name=".responser_history" />
         <activity android:name=".ListItemActivity2" />
-        <activity android:name=".Responser_category"></activity>
+        <activity android:name=".Responser_category" />
+        <activity android:name=".ListItemActivity3"></activity>
     </application>
 
 </manifest>

@@ -16,6 +16,7 @@
     <string name="password1">Password</string>
     <string name="type">Type:</string>
     <string name="login">Login</string>
+    <string name="complete">Complete</string>
     <string name="no_account_yet_create_one">No account yet? Create one</string>
 
 </resources>
