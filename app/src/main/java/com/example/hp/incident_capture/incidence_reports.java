@@ -1,5 +1,7 @@
 package com.example.hp.incident_capture;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +47,7 @@ public class incidence_reports extends AppCompatActivity {
             fbDb = FirebaseDatabase.getInstance().getReference("Reports");
         }
         Log.e("error1","start");
+        showDialog(1);
         fbDb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -74,7 +78,7 @@ public class incidence_reports extends AppCompatActivity {
                                     Log.v("error5", childDataSnapshot.getKey());
 
                                     sub.child(subject1).child("Category").addValueEventListener(new ValueEventListener() {
-
+                                        @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             String category1 = dataSnapshot.getValue(String.class);
                                             Log.v("error6", category);
@@ -94,10 +98,13 @@ public class incidence_reports extends AppCompatActivity {
                                                 Log.v("error10", category1);
                                                 Log.v("error11", subject1);
                                             }
+                                            adapter.notifyDataSetChanged();
+                                            dismissDialog(1);
                                         }
 
 
                                         public void onCancelled(DatabaseError databaseError) {
+                                            dismissDialog(1);
                                             Log.w("onCancelled", databaseError.toException());
                                         }
                                     });
@@ -107,7 +114,7 @@ public class incidence_reports extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-
+                                dismissDialog(1);
                             }
                         });
 
@@ -118,13 +125,12 @@ public class incidence_reports extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                    dismissDialog(1);
             }
         });
 
-
-
         adapter= new CustomAdapter(dataModels,getApplicationContext());
+
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -137,9 +143,20 @@ public class incidence_reports extends AppCompatActivity {
                 bundle.putString("subjectline",subject);
                 myIntent.putExtras(bundle);
                 startActivityForResult(myIntent, 0);
-
             }
         });
 
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch(id) {
+            case 1:
+                ProgressDialog progressBar = new ProgressDialog(this);
+                progressBar.setTitle("Please wait");
+                progressBar.setCancelable(false);
+                return progressBar;
+        }
+        return null;
     }
 }
